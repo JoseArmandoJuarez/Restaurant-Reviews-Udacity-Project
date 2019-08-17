@@ -86,9 +86,8 @@ initMap = () => {
   });
 
   //L.tileLayer -> Used to load and display tile layers on the map.
-  //TODO: in mapboxToken add your API KEY. To get one go to https://www.mapbox.com/install/
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1IjoiampyeiIsImEiOiJjanlyczJtZGgwMjJkM21xazR6b2N3b2V5In0.zoePybksFm1910s9YZUI9A',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/" aria-hidden="true" tabindex="-1">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/" aria-hidden="true" tabindex="-1">CC-BY-SA</a>, ' +
@@ -165,9 +164,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img'); //create image
   image.className = 'restaurant-img'; //add a class name
   image.src = DBHelper.imageUrlForRestaurant(restaurant); //load image for restaurant
+  image.alt = `Image of restaurant ${restaurant.name}`;
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
