@@ -25,9 +25,8 @@ initMap = () => {
       });
 
       //L.tileLayer -> Used to load and display tile layers on the map.
-      //TODO: in mapboxToken add your API KEY. To get one go to https://www.mapbox.com/install/
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+        mapboxToken: 'pk.eyJ1IjoiampyeiIsImEiOiJjanlyczJtZGgwMjJkM21xazR6b2N3b2V5In0.zoePybksFm1910s9YZUI9A',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -83,6 +82,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = `Image of restaurant ${restaurant.name}`;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -122,7 +122,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.setAttribute('aria-label', 'Reviews');
   title.setAttribute('tabindex', '0');
   title.innerHTML = 'Reviews';
